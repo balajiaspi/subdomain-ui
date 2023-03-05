@@ -12,8 +12,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+    console.log('in req body --> ', req.body);
     if( req.body ) {
-        res.redirect(`https://${req.body.username}.vidhyaan.com`);
+        console.log('user name --> ', req.body.username);
+        res.redirect(`http://${req.body.username}.vidhyaan.com`);
     }
 });
 
