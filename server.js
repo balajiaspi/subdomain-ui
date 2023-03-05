@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const path = require('path');
 
 const app = express();
@@ -6,13 +8,18 @@ const app = express();
 // Serve static files from the current directory
 app.use(express.static(path.join(__dirname)));
 
+// Parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Parse application/json
+app.use(bodyParser.json());
+
 // Route for the home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'login.html'));
 });
 
 app.post('/login', (req, res) => {
-    console.log('in req body --> ', req.body);
     if( req.body ) {
         console.log('user name --> ', req.body.username);
         res.redirect(`http://${req.body.username}.vidhyaan.com`);
