@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     if( req.body ) {
         console.log('user name --> ', req.body.username);
-        res.redirect(`http://${req.body.username}.vidhyaan.com`);
+        res.redirect(`https://${req.body.username}.vidhyaan.com`);
     }
 });
 
